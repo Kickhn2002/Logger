@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.CompilerServices;
 
 namespace Logger {
-    class LoggerManager {
+   public class LoggerManager :ILoggerManager {
 
         public List<Log> logList { get; private set; }
 
@@ -24,6 +24,36 @@ namespace Logger {
 
             logList.Add(new Log(message, path, memberName, sourceLineNumber));
 
+        }
+
+        /// <summary>
+        /// Add a log with a message and an exeption message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// /// <param name="exception">The exception</param>
+        /// <param name="path">Path of the class where the log was created. DO NOT INSERT ANYTHING</param>
+        /// <param name="memberName">Method of the class where the log was created. DO NOT INSERT ANYTHING</param>
+        /// <param name="sourceLineNumber">Line of the class where the log was created. DO NOT INSERT ANYTHING</param>
+        public void AddLog(string message,Exception exception, [CallerFilePath] string path = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int sourceLineNumber = 0) {
+
+            logList.Add(new Log(message, path, memberName, sourceLineNumber,exception.Message));
+
+        }
+
+        /// <summary>
+        /// Clear the log list
+        /// </summary>
+        public void ClearLogs() {
+            logList.Clear();
+        }
+
+        /// <summary>
+        /// Gets
+        /// </summary>
+        /// <returns>The list of logs</returns>
+        public List<Log> GetLogList() {
+
+            return logList;
         }
     }
 }

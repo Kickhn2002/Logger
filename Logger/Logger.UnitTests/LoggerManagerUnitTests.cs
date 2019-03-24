@@ -7,30 +7,37 @@ namespace Logger.UnitTests {
 
     public class LoggerManagerUnitTests {
 
+        private ILoggerManager loggerManager;
+
         [Fact]
         public void AddLog_UnitTest() {
-            LoggerManager.AddLog("fooMessage");
+            loggerManager.AddLog("fooMessage");
 
-            Assert.Equal("fooMessage", LoggerManager.getLogList()[0].message);
+            Assert.Equal("fooMessage", loggerManager.GetLogList()[0].Message);
         }
 
         [Fact]
         public void AddLogWithException_UnitTest() {
 
             Exception ex = new Exception("fooExceptionMessage");
-            LoggerManager.AddLog("fooMessage", ex);
+            loggerManager.AddLog("fooMessage", ex);
 
-            Assert.Equal("fooExceptionMessage", LoggerManager.getLogList()[0].exceptionMessage);
+            Assert.Equal("fooExceptionMessage", loggerManager.GetLogList()[0].Exception);
 
         }
 
         [Fact]
         public void ClearLogs_UnitTest() {
 
-            LoggerManager.AddLog("fooMessage");
-            LoggerManager.ClearLogs();
+            loggerManager.AddLog("fooMessage");
+            loggerManager.ClearLogs();
 
-            Assert.True(LoggerManager.getLogList().Count == 0);
+            Assert.True(loggerManager.GetLogList().Count == 0);
+        }
+
+        public LoggerManagerUnitTests() {
+
+            loggerManager = new LoggerManager();
         }
     }
 }
