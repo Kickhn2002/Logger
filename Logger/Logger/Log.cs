@@ -7,7 +7,7 @@ namespace Logger {
     /// <summary>
     /// A log
     /// </summary>
-   public class Log {
+    public class Log {
 
         // Message written by Dev
         public string Message { get; private set; }
@@ -25,7 +25,7 @@ namespace Logger {
         public string Exception { get; private set; }
 
 
-        public Log(string Message, string Class, string Method, int Line, string Exception="") {
+        public Log(string Message, string Class, string Method, int Line, string Exception = "") {
 
             this.Message = Message;
             this.Class = Class;

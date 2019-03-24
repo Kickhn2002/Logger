@@ -11,6 +11,8 @@ namespace Logger {
 
         void ClearLogs();
 
+        string CreateLogFileText();
+
         List<Log> GetLogList();
     }
 }
