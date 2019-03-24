@@ -26,6 +26,28 @@ namespace Logger.UnitTests {
 
         }
 
+
+        [Fact]
+        public void AddLogClassPath_UnitTest() {
+            loggerManager.AddLog("fooMessage","fooPath");
+
+            Assert.Equal("fooPath", loggerManager.GetLogList()[0].Class);
+        }
+
+        [Fact]
+        public void AddLogMember_UnitTest() {
+            loggerManager.AddLog("fooMessage", "fooPath","fooMember");
+
+            Assert.Equal("fooMember", loggerManager.GetLogList()[0].Method);
+        }
+
+        [Fact]
+        public void AddLogClassLine_UnitTest() {
+            loggerManager.AddLog("fooMessage", "fooPath","fooMember",-1);
+
+            Assert.Equal(-1, loggerManager.GetLogList()[0].Line);
+        }
+
         [Fact]
         public void ClearLogs_UnitTest() {
 
@@ -35,8 +57,21 @@ namespace Logger.UnitTests {
             Assert.True(loggerManager.GetLogList().Count == 0);
         }
 
+        [Fact]
+        public void CreateLogFileText_UnitTest() {
+
+            loggerManager.AddLog("fooMessage", "fooClass", "fooMethod", -1);
+
+            var expectedJsonString = "[\r\n  {\r\n    \"Message\": \"fooMessage\",\r\n    \"Class\": \"fooClass\",\r\n    \"Method\": \"fooMethod\",\r\n    \"Line\": -1,\r\n    \"Exception\": \"\"\r\n  }\r\n]";
+            var JsonText = JsonConvert.SerializeObject(loggerManager.GetLogList(), Formatting.Indented);
+
+            Assert.Equal(expectedJsonString, JsonText);
+
+        }
+
         public LoggerManagerUnitTests() {
 
+            // reset the logger managee
             loggerManager = new LoggerManager();
         }
     }
