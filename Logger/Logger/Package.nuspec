@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Logger</id>
+    <version>1.0.0</version>
+    <authors>Phuong Huy Nguyen</authors>
+    <owners>Phuong Huy Nguyen</owners>
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Allows user/dev to log messages along with class and member caller info and create a  Json File out of it</description>
+    <releaseNotes>Initial Dll</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Logger Log Json</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="12.0.1" />
+    </dependencies>
+  </metadata>
+</package>

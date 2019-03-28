@@ -28,8 +28,14 @@ namespace Logger {
         /// <param name="sourceLineNumber">Line of the class where the log was created. DO NOT INSERT ANYTHING</param>
         public void AddLog(string message, [CallerFilePath] string path = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int sourceLineNumber = 0) {
 
-            logList.Add(new Log(message, path, memberName, sourceLineNumber));
+            try {
+                logList.Add(new Log(message, path, memberName, sourceLineNumber));
+            }
 
+            catch {
+
+                System.Diagnostics.Debug.Write("There was an error adding a log message");
+            }
         }
 
         /// <summary>
@@ -42,15 +48,29 @@ namespace Logger {
         /// <param name="sourceLineNumber">Line of the class where the log was created. DO NOT INSERT ANYTHING</param>
         public void AddLog(string message, Exception exception, [CallerFilePath] string path = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int sourceLineNumber = 0) {
 
-            logList.Add(new Log(message, path, memberName, sourceLineNumber, exception.Message));
+            try {
+                logList.Add(new Log(message, path, memberName, sourceLineNumber, exception.Message));
+            }
 
+            catch {
+
+                System.Diagnostics.Debug.Write("There was an error adding a log message");
+            }
         }
 
         /// <summary>
         /// Clear the log list
         /// </summary>
         public void ClearLogs() {
-            logList.Clear();
+
+            try {
+
+                logList.Clear();
+            }
+            catch {
+
+                System.Diagnostics.Debug.Write("There was an error clearing the logs");
+            }
         }
 
         /// <summary>
@@ -68,8 +88,15 @@ namespace Logger {
         /// <returns> The logs in a Json format</returns>
         public string CreateLogFileText() {
 
-            return JsonConvert.SerializeObject(logList, Formatting.Indented);
+            try {
 
+                return JsonConvert.SerializeObject(logList, Formatting.Indented);
+            }
+
+            catch {
+                System.Diagnostics.Debug.Write("There was an error returning the logs in a JSon format, It will return an empty string");
+                return "";
+            }
         }
     }
 }
