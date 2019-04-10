@@ -11,13 +11,12 @@
             <ColumnDefinition Width="29*"/>
             <ColumnDefinition Width="763*"/>
         </Grid.ColumnDefinitions>
-        <DatePicker x:Name="ToDate" Grid.Column="1" HorizontalAlignment="Left" Margin="489,27,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="FromDate" Grid.Column="1" HorizontalAlignment="Left" Margin="372,27,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="SearchText" HorizontalAlignment="Left" Height="23" Margin="10,24,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="238" Grid.ColumnSpan="2"/>
         <Button x:Name="SeachBtn" Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.457,0.803"/>
         <ComboBox x:Name="AttributeList" Grid.Column="1" HorizontalAlignment="Left" Margin="224,27,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="AddBtn" Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="123,52,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.457,0.803" Click="Button_Copy_Click"/>
-        <DataGrid x:Name="LogTable" Grid.Column="1" HorizontalAlignment="Left" Height="254" Margin="16,102,0,0" VerticalAlignment="Top" Width="328"/>
+        <DataGrid x:Name="LogTable" Grid.Column="1" HorizontalAlignment="Left" Height="254" Margin="16,102,0,0" VerticalAlignment="Top" Width="328" SelectionChanged="LogTable_SelectionChanged"/>
+        <Button x:Name="OpenBtn" Content="Open" Grid.Column="1" HorizontalAlignment="Left" Margin="661,24,0,0" VerticalAlignment="Top" Width="75" Click="Button_Open_Click"/>
 
     </Grid>
 </Window>

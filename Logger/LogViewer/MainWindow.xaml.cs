@@ -20,13 +20,30 @@ namespace LogViewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+
+        private LogViewerController logViewerController;
+        public MainWindow(LogViewerController logViewerController)
         {
+
+           
             InitializeComponent();
+            this.logViewerController = logViewerController;
+
         }
 
         private void Button_Copy_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void LogTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Open_Click(object sender, RoutedEventArgs e)
+        {
+            logViewerController.openFile();
 
         }
     }
