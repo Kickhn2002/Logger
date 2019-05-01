@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger.UnitTests", "Logger.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogViewer", "LogViewer\LogViewer.csproj", "{163D82D7-CF85-4F06-9B14-05799A2D060C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogViewerUnitTests", "LogViewerUnitTests\LogViewerUnitTests.csproj", "{F69DBB2A-5910-46BF-A199-2EB609CCF201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogViewerUnitTests", "LogViewerUnitTests\LogViewerUnitTests.csproj", "{F69DBB2A-5910-46BF-A199-2EB609CCF201}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

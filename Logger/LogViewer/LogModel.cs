@@ -13,12 +13,13 @@ namespace LogViewer
     {
         public List<Log> logs;
 
-
-
-        public void readFile(string jsonString)
+        public LogModel()
         {
-            logs = JsonConvert.DeserializeObject<List<Log>>(jsonString);
-
+            logs = new List<Log>();
+        }
+        public void addLog(List<Log> logs)
+        {
+            this.logs = logs;
         }
     }
 }

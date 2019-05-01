@@ -3,29 +3,29 @@ using Xunit;
 using LogViewer;
 using Logger;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace LogViewerUnitTests
 {
     public class LogModelUnitTests
     {
         public LogModel logmodel;
-        public ILoggerManager loggerManager;
 
         [Fact]
         public void ReadFiles_UnitTest()
         {
             //arrange
 
-            loggerManager.AddLog("fooMessage", "fooPath", "fooMethod", -1);
-            string addedjsonString = "[\r\n  {\r\n    \"Message\": \"fooMessage\",\r\n    \"Class\": \"fooPath\",\r\n    \"Method\": \"fooMethod\",\r\n    \"Line\": -1,\r\n    \"Exception\": \"\"\r\n  }]";
-            string expectedJsonString = loggerManager.CreateLogFileText();
+            List<Log> fooLog = new List<Log>();
+            var expectedMessage = "fooMessage";
+            fooLog.Add(new Log("fooMessage", "fooClass", "fooMethod", 1));
+            
 
             //act
-            logmodel.readFile(addedjsonString);
-           string jsonString = JsonConvert.SerializeObject(logmodel.logs, Formatting.Indented);
+            logmodel.addLog(fooLog);
 
             //assert
-            Assert.Equal(expectedJsonString, jsonString);
+            Assert.Equal(expectedMessage,logmodel.logs[0].Message);
 
 
         }
@@ -36,8 +36,6 @@ namespace LogViewerUnitTests
 
             // reset before each test
             logmodel = new LogModel();
-            loggerManager = new LoggerManager();
-
 
         }
     }
