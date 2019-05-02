@@ -16,14 +16,28 @@ namespace LogViewer
         public event LogChangedEventHandler logChanged;
 
         public List<Log> logs;
+        public List<IFilter> filters;
 
         public LogModel()
         {
             logs = new List<Log>();
+            filters = new List<IFilter>();
         }
         public void addLog(List<Log> logs)
         {
             this.logs = logs;
+            logChanged?.Invoke();
+        }
+
+        public void addFilter (LogAttributesEnum attribute, string attributeSearch)
+        {
+            filters.Add(new Filter(attribute, attributeSearch));
+            logChanged?.Invoke();
+        }
+
+        public void clearFilter()
+        {
+            filters.Clear();
             logChanged?.Invoke();
         }
     }

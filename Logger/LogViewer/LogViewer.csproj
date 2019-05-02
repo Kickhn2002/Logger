@@ -56,12 +56,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IFilter.cs" />
+    <Compile Include="LogAttributesEnum.cs" />
     <Compile Include="LogModel.cs" />
   </ItemGroup>
   <ItemGroup>
