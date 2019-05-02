@@ -11,6 +11,10 @@ namespace LogViewer
 {
    public class LogModel
     {
+
+        public delegate void LogChangedEventHandler();
+        public event LogChangedEventHandler logChanged;
+
         public List<Log> logs;
 
         public LogModel()
@@ -20,6 +24,7 @@ namespace LogViewer
         public void addLog(List<Log> logs)
         {
             this.logs = logs;
+            logChanged?.Invoke();
         }
     }
 }

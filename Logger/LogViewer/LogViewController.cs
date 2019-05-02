@@ -29,6 +29,7 @@ namespace LogViewer
 
                 string logText = File.ReadAllText(filePath);
                 List<Log> logs = JsonConvert.DeserializeObject<List<Log>>(logText);
+                model.addLog(logs);
             }
 
             catch (Exception ex)

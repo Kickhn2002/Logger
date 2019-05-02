@@ -24,6 +24,9 @@ namespace LogViewer
             this.logger = logger;
             this.model = model;
             logController = logViewController;
+
+            // subscribe
+            model.logChanged += update;
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -36,13 +39,12 @@ namespace LogViewer
             var dialog = new OpenFileDialog();
             dialog.Filter = "JSON File|*.json";
 
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog() != DialogResult.OK)
                 return;
 
             try
             {
-
-
+                logController.setLogFile(dialog.FileName);
             }
 
             catch (Exception ex)
@@ -50,6 +52,20 @@ namespace LogViewer
 
                 logger.AddLog("Failed to open Json File", ex);
             }
+        }
+
+        private void LogViewerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void update()
+        {
+            var bindingSource = new BindingSource();
+            bindingSource.DataSource = model.logs;
+            logDataGrid.DataSource = bindingSource;
+            logDataGrid.AutoResizeColumns();
+
         }
     }
 }
