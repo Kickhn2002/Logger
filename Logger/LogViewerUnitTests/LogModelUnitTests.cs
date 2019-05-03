@@ -20,7 +20,6 @@ namespace LogViewerUnitTests
             var expectedMessage = "fooMessage";
             fooLog.Add(new Log("fooMessage", "fooClass", "fooMethod", 1));
             
-
             //act
             logmodel.addLog(fooLog);
 
@@ -28,6 +27,24 @@ namespace LogViewerUnitTests
             Assert.Equal(expectedMessage,logmodel.logs[0].Message);
 
 
+        }
+
+
+        [Fact]
+        public void getFilteredLogs_UnitTest()
+        {
+
+            // arrange
+            logmodel.logs.Add(new Log("FooMessage","fooClass","fooMethod",1));
+            logmodel.logs.Add(new Log("BarMessage", "fooClass", "fooMethod", 1));
+            logmodel.addFilter(LogAttributesEnum.Message,"Foo");
+
+            //act
+            List<Log> filteredList = logmodel.getFilteredLogs();
+
+            //assert
+            Assert.True(1== filteredList.Count);
+            Assert.Equal("FooMessage",logmodel.logs[0].Message);
         }
 
 

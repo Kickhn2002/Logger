@@ -10,7 +10,7 @@ namespace LogViewer
     /// <summary>
     /// Represents a filter to check if the log follows the condition of the filter.
     /// </summary>
-    class Filter : IFilter
+   public class Filter : IFilter
     {
         LogAttributesEnum logAttribute;
         string attributeSearch;

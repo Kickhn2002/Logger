@@ -41,6 +41,11 @@ namespace LogViewer
 
         }
 
+        public void addFilter(LogAttributesEnum attribute, string attributeSearch)
+        {
+            model.addFilter(attribute,attributeSearch);
+        }
+
 
     }
 }

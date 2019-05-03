@@ -25,6 +25,9 @@ namespace LogViewer
             this.model = model;
             logController = logViewController;
 
+            // initialise comboBox value of log attribute
+            LogAttributeComboBox.DataSource = Enum.GetValues(typeof(LogAttributesEnum));
+
             // subscribe
             model.logChanged += update;
         }
@@ -62,10 +65,28 @@ namespace LogViewer
         private void update()
         {
             var bindingSource = new BindingSource();
-            bindingSource.DataSource = model.logs;
+            bindingSource.DataSource = model.getFilteredLogs();
             logDataGrid.DataSource = bindingSource;
             logDataGrid.AutoResizeColumns();
 
         }
+
+        private void ApplyFilter_Click(object sender, EventArgs e)
+        {
+
+            logController.addFilter((LogAttributesEnum)LogAttributeComboBox.SelectedItem, FilterTextBox.Text);
+
+        }
+
+        private void FilterTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogAttributeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

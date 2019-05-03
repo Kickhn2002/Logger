@@ -40,5 +40,30 @@ namespace LogViewer
             filters.Clear();
             logChanged?.Invoke();
         }
+
+        public List<Log> getFilteredLogs()
+        {
+            if (filters == null || !filters.Any())
+            {
+                return logs;
+            }
+
+            var filteredList = new List<Log>();
+
+            // check if each logs fullfill the filter condition. If yes, then gets added to the list
+            foreach (Log log in logs)
+            {
+                foreach (Filter filter in filters)
+                {
+                    if (filter.RespectFilterCondition(log))
+                    {
+                        filteredList.Add(log);
+                        break;
+                    }
+                }
+
+            }
+            return filteredList;
+        }
     }
 }
