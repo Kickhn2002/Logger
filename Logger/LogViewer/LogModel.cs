@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace LogViewer
 {
-   public class LogModel
+    public class LogModel
     {
 
         public delegate void LogChangedEventHandler();
@@ -29,7 +29,7 @@ namespace LogViewer
             logChanged?.Invoke();
         }
 
-        public void addFilter (LogAttributesEnum attribute, string attributeSearch)
+        public void addFilter(LogAttributesEnum attribute, string attributeSearch)
         {
             filters.Add(new Filter(attribute, attributeSearch));
             logChanged?.Invoke();
@@ -43,24 +43,22 @@ namespace LogViewer
 
         public List<Log> getFilteredLogs()
         {
-            if (filters == null || !filters.Any())
-            {
-                return logs;
-            }
+            var filteredList = new List<Log>(logs);
 
-            var filteredList = new List<Log>();
 
+            
             // check if each logs fullfill the filter condition. If yes, then gets added to the list
-            foreach (Log log in logs)
+            for (int i = filteredList.Count - 1; i >= 0; i--) // for loop iterating backwards to be able to delete element in the list
             {
                 foreach (Filter filter in filters)
                 {
-                    if (filter.RespectFilterCondition(log))
+                    if (!filter.RespectFilterCondition(filteredList[i]))
                     {
-                        filteredList.Add(log);
+                        filteredList.RemoveAt(i);
                         break;
                     }
                 }
+
 
             }
             return filteredList;

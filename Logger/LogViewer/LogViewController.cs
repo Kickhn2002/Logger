@@ -46,6 +46,12 @@ namespace LogViewer
             model.addFilter(attribute,attributeSearch);
         }
 
+        public void clearFilter()
+        {
+
+            model.clearFilter();
+        }
+
 
     }
 }

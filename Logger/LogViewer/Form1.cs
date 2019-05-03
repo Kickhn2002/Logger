@@ -73,7 +73,7 @@ namespace LogViewer
 
         private void ApplyFilter_Click(object sender, EventArgs e)
         {
-
+            logController.clearFilter(); // TODO remove
             logController.addFilter((LogAttributesEnum)LogAttributeComboBox.SelectedItem, FilterTextBox.Text);
 
         }

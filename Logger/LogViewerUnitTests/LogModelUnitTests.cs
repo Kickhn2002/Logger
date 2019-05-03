@@ -25,10 +25,7 @@ namespace LogViewerUnitTests
 
             //assert
             Assert.Equal(expectedMessage,logmodel.logs[0].Message);
-
-
         }
-
 
         [Fact]
         public void getFilteredLogs_UnitTest()
@@ -47,6 +44,21 @@ namespace LogViewerUnitTests
             Assert.Equal("FooMessage",logmodel.logs[0].Message);
         }
 
+        [Fact]
+        public void getFilteredLogsWithEmptyFilter_UnitTest()
+        {
+            // arrange
+            logmodel.logs.Add(new Log("FooMessage", "fooClass", "fooMethod", 1));
+            logmodel.logs.Add(new Log("BarMessage", "fooClass", "fooMethod", 1));
+
+            //act
+            List<Log> filteredList = logmodel.getFilteredLogs();
+
+            //assert
+            Assert.True(2 == filteredList.Count);
+            Assert.Equal("FooMessage", logmodel.logs[0].Message);
+            Assert.Equal("BarMessage", logmodel.logs[1].Message);
+        }
 
         public LogModelUnitTests()
         {
