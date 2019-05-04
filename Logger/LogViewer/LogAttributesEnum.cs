@@ -12,7 +12,8 @@ namespace LogViewer
         Class,
         Method,
         Line,
-        Exception
+        Exception,
+        Date
 
     }
 }

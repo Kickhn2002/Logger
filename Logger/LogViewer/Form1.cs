@@ -88,5 +88,10 @@ namespace LogViewer
 
         }
 
+        private void ResetFilter_Click(object sender, EventArgs e)
+        {
+            logController.clearFilter();
+            FilterTextBox.Text = "";
+        }
     }
 }

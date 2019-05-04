@@ -24,13 +24,16 @@ namespace Logger {
         // The exception message
         public string Exception { get; private set; }
 
+        public string Date { get; private set; }
 
-        public Log(string Message, string Class, string Method, int Line, string Exception = "") {
+
+        public Log(string Message, string Class, string Method, int Line,string Date, string Exception = "") {
 
             this.Message = Message;
             this.Class = Class;
             this.Method = Method;
             this.Line = Line;
+            this.Date = Date;
             this.Exception = Exception;
 
         }

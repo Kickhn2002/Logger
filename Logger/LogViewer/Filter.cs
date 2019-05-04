@@ -36,6 +36,8 @@ namespace LogViewer
                     return log.Line == Int32.Parse(attributeSearch);
                 case LogAttributesEnum.Exception:
                     return log.Exception.Contains(attributeSearch);
+                case LogAttributesEnum.Date:
+                    return log.Date.Contains(attributeSearch);
 
                 default:
                     throw new Exception("log attribute does not exist in log class"); // should never happen ; We should handle all cases of Log attribute

@@ -28,8 +28,11 @@ namespace Logger {
         /// <param name="sourceLineNumber">Line of the class where the log was created. DO NOT INSERT ANYTHING</param>
         public void AddLog(string message, [CallerFilePath] string path = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int sourceLineNumber = 0) {
 
+            var currentTime = new DateTime().Date;
+            string formattedCurrentTime = currentTime.ToString("MM/dd/yyyy HH:mm");
+
             try {
-                logList.Add(new Log(message, path, memberName, sourceLineNumber));
+                logList.Add(new Log(message, path, memberName, sourceLineNumber, formattedCurrentTime));
             }
 
             catch {
@@ -48,8 +51,11 @@ namespace Logger {
         /// <param name="sourceLineNumber">Line of the class where the log was created. DO NOT INSERT ANYTHING</param>
         public void AddLog(string message, Exception exception, [CallerFilePath] string path = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int sourceLineNumber = 0) {
 
+            var currentTime = new DateTime().Date;
+            string formattedCurrentTime = currentTime.ToString("MM/dd/yyyy HH:mm");
+
             try {
-                logList.Add(new Log(message, path, memberName, sourceLineNumber, exception.Message));
+                logList.Add(new Log(message, path, memberName, sourceLineNumber, formattedCurrentTime, exception.Message));
             }
 
             catch {
